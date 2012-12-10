@@ -1,0 +1,89 @@
+@(reports: Seq[ErrorReport], bugDirs: Seq[String])
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Error Reports</title>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/demo_table.css")">
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.3/jquery.dataTables.min.js"
+	type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf-8">
+        function getUrlVars()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        
+        
+			$(document).ready(function() 
+			{
+				$('#stacks').dataTable( {"bStateSave": true} );
+				var mailto = getUrlVars()["mailto"]
+				if (mailto && mailto.length > 0)
+			    {
+					decoded = decodeURIComponent(mailto);
+					window.open(decoded)
+			    }
+			} );
+			
+		</script>
+</head>
+<body>
+	<div id="mailto"></div>
+	<table id="stacks" width="100%">
+		<thead>
+			<tr>
+				<th>Filename</th>
+				<th>DN</th>
+				<th>App Version</th>
+				<th>OS Version</th>
+				<th>Username</th>
+				<th>logType</th>
+				<th>logText</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(report <- reports) {
+			<tr>
+				<td>@report.filename</td>
+				<td>@report.dn</td>
+				<td>@report.appVersion</td>
+				<td>@report.osVersion</td>
+				<td>@report.username</td>
+				<td>@report.logType</td>
+				<td>@report.logText</td>
+				<td>
+					<form name="input" action="movereport" method="get">
+						New Bug Name <input type="text" name="dirName"> <input
+							type="hidden" name="filename" value="@report.filename"> <input
+							type="hidden" name="mailto" value="yes"> <input
+							type="submit" value="Create">
+					</form> <br />
+					<form name="input" action="movereport" method="get">
+						<input type="hidden" name="filename" value="@report.filename">
+						Existing <select name="dirName">
+						@for(dir <- bugDirs) {
+							<option value="@dir">@dir</option>
+						}
+						</select> <input type="submit" value="Asssign">
+					</form>
+				</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,758 @@
+11-09 15:39:11 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-158]
+11-09 15:39:13 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "[*]#CREATE SEQUENCE UNIQUE_STACK_ID_SEQ "; SQL statement:
+#CREATE SEQUENCE unique_stack_id_seq [42000-158]
+11-09 15:47:48 jdbc[63]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORTS" not found; SQL statement:
+DROP TABLE error_reports [42102-158]
+11-09 15:55:40 jdbc[120]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORT" not found; SQL statement:
+INSERT INTO error_Report (timestamp, app_version, uuid, os_version,phone_number,filename)          VALUES (?, ?, ?, ?, ?, ?) [42102-158]
+11-09 15:56:12 jdbc[116]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORT" not found; SQL statement:
+INSERT INTO error_Report (timestamp, app_version, uuid, os_version,phone_number,filename)          VALUES (?, ?, ?, ?, ?, ?) [42102-158]
+11-09 15:56:16 jdbc[117]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORT" not found; SQL statement:
+INSERT INTO error_Report (timestamp, app_version, uuid, os_version,phone_number,filename)          VALUES (?, ?, ?, ?, ?, ?) [42102-158]
+11-09 15:56:18 jdbc[121]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORT" not found; SQL statement:
+INSERT INTO error_Report (timestamp, app_version, uuid, os_version,phone_number,filename)          VALUES (?, ?, ?, ?, ?, ?) [42102-158]
+11-09 15:56:20 jdbc[122]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORT" not found; SQL statement:
+INSERT INTO error_Report (timestamp, app_version, uuid, os_version,phone_number,filename)          VALUES (?, ?, ?, ?, ?, ?) [42102-158]
+11-11 15:36:14 jdbc[82]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNQIQUE_HASH_REF" not found; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unqique_hash_ref))          VALUES (?, ?, ?, ?) [42122-158]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.table.Table.getColumn(Table.java:595)
+	at org.h2.command.Parser.parseColumn(Parser.java:793)
+	at org.h2.command.Parser.parseColumnList(Parser.java:778)
+	at org.h2.command.Parser.parseInsert(Parser.java:958)
+	at org.h2.command.Parser.parsePrepared(Parser.java:375)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1119)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:71)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:267)
+	at com.jolbox.bonecp.ConnectionHandle.prepareStatement(ConnectionHandle.java:820)
+	at play.api.db.AutoCleanConnection$$anonfun$prepareStatement$1.apply(DB.scala:439)
+	at play.api.db.AutoCleanConnection$$anonfun$prepareStatement$1.apply(DB.scala:439)
+	at play.api.db.AutoCleanConnection.registering(DB.scala:424)
+	at play.api.db.AutoCleanConnection.prepareStatement(DB.scala:439)
+	at anorm.SimpleSql.getFilledStatement(Anorm.scala:378)
+	at anorm.Sql$class.executeUpdate(Anorm.scala:451)
+	at anorm.SimpleSql.executeUpdate(Anorm.scala:359)
+	at models.DatabaseAccess$$anonfun$persistStack$1.apply(DatabaseAccess.scala:64)
+	at models.DatabaseAccess$$anonfun$persistStack$1.apply(DatabaseAccess.scala:57)
+	at play.api.db.DBApi$class.withConnection(DB.scala:79)
+	at play.api.db.BoneCPApi.withConnection(DB.scala:273)
+	at play.api.db.DB$$anonfun$withConnection$3.apply(DB.scala:158)
+	at play.api.db.DB$$anonfun$withConnection$3.apply(DB.scala:158)
+	at scala.Option.map(Option.scala:133)
+	at play.api.db.DB$.withConnection(DB.scala:158)
+	at models.DatabaseAccess$.persistStack(DatabaseAccess.scala:57)
+	at controllers.Application$$anonfun$addDummyData$1.apply(Application.scala:63)
+	at controllers.Application$$anonfun$addDummyData$1.apply(Application.scala:56)
+	at play.api.mvc.Action$$anonfun$apply$4.apply(Action.scala:204)
+	at play.api.mvc.Action$$anonfun$apply$4.apply(Action.scala:204)
+	at play.api.mvc.Action$$anon$1.apply(Action.scala:170)
+	at play.core.ActionInvoker$$anonfun$receive$1$$anonfun$6.apply(Invoker.scala:126)
+	at play.core.ActionInvoker$$anonfun$receive$1$$anonfun$6.apply(Invoker.scala:126)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:17)
+	at play.core.ActionInvoker$$anonfun$receive$1.apply(Invoker.scala:125)
+	at play.core.ActionInvoker$$anonfun$receive$1.apply(Invoker.scala:115)
+	at akka.actor.Actor$class.apply(Actor.scala:318)
+	at play.core.ActionInvoker.apply(Invoker.scala:113)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:626)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:197)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:179)
+	at akka.dispatch.ForkJoinExecutorConfigurator$MailboxExecutionTask.exec(AbstractDispatcher.scala:516)
+	at akka.jsr166y.ForkJoinTask.doExec(ForkJoinTask.java:259)
+	at akka.jsr166y.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975)
+	at akka.jsr166y.ForkJoinPool.runWorker(ForkJoinPool.java:1479)
+	at akka.jsr166y.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104)
+11-11 15:36:25 jdbc[92]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:36:29 jdbc[97]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:36:31 jdbc[99]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:36:31 jdbc[100]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:36:32 jdbc[96]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:36:32 jdbc[93]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:36:32 jdbc[98]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO STACKS (STACK, HASH, ERROR_REPORT_REF, UNIQUE_HASH_REF))[*]          VALUES (?, ?, ?, ?) "; expected "DIRECT, SORTED, DEFAULT, VALUES, SET, (, SELECT, FROM"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref))          VALUES (?, ?, ?, ?) [42001-158]
+11-11 15:37:07 jdbc[102]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'kcats A' (UNIQUE_HASH_REF INTEGER)"; SQL statement:
+INSERT INTO stacks (stack, hash, error_report_ref, unique_hash_ref)          VALUES (?, ?, ?, ?) -- (?1, ?2, ?3, ?4) [22018-158]
+11-11 23:09:48 jdbc[357]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * STACKS[*] "; SQL statement:
+SELECT * stacks [42000-168]
+11-11 23:09:57 jdbc[357]: exception
+org.h2.jdbc.JdbcSQLException: Timeout trying to lock table "STACKS"; SQL statement:
+SELECT * FROM stacks [50200-168]
+11-13 17:03:38 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "UNIQUE_HASH" not found; SQL statement:
+select stacks.date from stacks,unique_hash where unique_hash_ref='DA975A7B5D9E4BDFD7E604E43BFAD0C7' ORDER BY DATE DESC LIMIT 1 [42102-168]
+11-13 17:12:18 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.STACK" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._0 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.STACK
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-13 17:12:32 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.HASH" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._1 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.HASH
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-13 17:12:34 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.HASH" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._2 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.HASH
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-13 17:14:23 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.HASH" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._3 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.HASH
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-13 17:14:24 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.HASH" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._4 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.HASH
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-13 17:14:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.HASH" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._5 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.HASH
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-13 17:14:26 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_STACKS.HASH" not found; SQL statement:
+CREATE FORCE VIEW PUBLIC._6 AS
+SELECT
+    STACKS.DATE,
+    STACKS.LOG_LEVEL,
+    STACKS.LOG_MESSAGE,
+    STACKS.EXCEPTION,
+    STACKS.STACK,
+    STACKS.HASH,
+    STACKS.UNIQUE_HASH_REF,
+    STACKS.ERROR_REPORT_REF
+FROM PUBLIC.STACKS
+WHERE UNIQUE_HASH_REF = UNIQUE_STACKS.HASH
+ORDER BY =DATE DESC
+LIMIT 1 [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:161)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.engine.Session.prepare(Session.java:388)
+	at org.h2.engine.Session.prepare(Session.java:375)
+	at org.h2.table.TableView.compileViewQuery(TableView.java:99)
+	at org.h2.table.TableView.initColumnsAndTables(TableView.java:144)
+	at org.h2.table.TableView.init(TableView.java:95)
+	at org.h2.table.TableView.<init>(TableView.java:61)
+	at org.h2.table.TableView.createTempView(TableView.java:420)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1037)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1690)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:1797)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1684)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1527)
+	at org.h2.command.Parser.parseSelect(Parser.java:1515)
+	at org.h2.command.Parser.parsePrepared(Parser.java:405)
+	at org.h2.command.Parser.parse(Parser.java:279)
+	at org.h2.command.Parser.parse(Parser.java:251)
+	at org.h2.command.Parser.prepareCommand(Parser.java:217)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-14 17:36:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "UNIQUE_HASH_REF" not found; SQL statement:
+select (select count(*) from error_reports where unique_hash_ref=unique_stacks.hash) AS COUNT, (select DATE from stacks where unique_hash_ref=unique_stacks.hash ORDER BY DATE DESC LIMIT 1) AS LATEST, *  FROM unique_stacks [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:159)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.expression.Subquery.optimize(Subquery.java:69)
+	at org.h2.expression.Alias.optimize(Alias.java:47)
+	at org.h2.command.dml.Select.prepare(Select.java:799)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-14 17:37:41 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "STACKS.UNIQUE_HASH_REF" not found; SQL statement:
+select (select count(*) from error_reports where stacks.unique_hash_ref=unique_stacks.hash AND stacks.error_report_ref=filename) AS COUNT, (select DATE from stacks where unique_hash_ref=unique_stacks.hash ORDER BY DATE DESC LIMIT 1) AS LATEST, *  FROM unique_stacks [42122-168]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:138)
+	at org.h2.expression.Comparison.optimize(Comparison.java:159)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:126)
+	at org.h2.command.dml.Select.prepare(Select.java:802)
+	at org.h2.expression.Subquery.optimize(Subquery.java:69)
+	at org.h2.expression.Alias.optimize(Alias.java:47)
+	at org.h2.command.dml.Select.prepare(Select.java:799)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:364)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1109)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1311)
+	at org.h2.server.web.WebApp.query(WebApp.java:1001)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:964)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:967)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+11-16 09:11:55 jdbc[81]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-158]
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.message.DbException.get(DbException.java:135)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:121)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:94)
+	at org.h2.Driver.connect(Driver.java:72)
+	at play.utils.ProxyDriver.connect(ProxyDriver.scala:9)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:256)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:305)
+	at com.jolbox.bonecp.BoneCPDataSource.maybeInit(BoneCPDataSource.java:150)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:112)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:242)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:194)
+	at scala.collection.immutable.List.map(List.scala:45)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:240)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at play.api.Play$.start(Play.scala:60)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:125)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:112)
+	at scala.Option.map(Option.scala:133)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:112)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:110)
+	at scala.Either$RightProjection.flatMap(Either.scala:277)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at akka.dispatch.Future$$anon$3.liftedTree1$1(Future.scala:195)
+	at akka.dispatch.Future$$anon$3.run(Future.scala:194)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:94)
+	at akka.jsr166y.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1381)
+	at akka.jsr166y.ForkJoinTask.doExec(ForkJoinTask.java:259)
+	at akka.jsr166y.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975)
+	at akka.jsr166y.ForkJoinPool.runWorker(ForkJoinPool.java:1479)
+	at akka.jsr166y.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-158]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	... 44 more
+11-20 14:52:42 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ERROR_REPORT (
+FILENAME VARCHAR PRIMARY KEY
+DN[*] VARCHAR,
+APPVERSION VARCHAR,
+OSVERSION VARCHAR,
+USERNAME VARCHAR,
+LOGTYPE VARCHAR,
+LOGTEXT VARCHAR
+) "; expected "HASH, AUTO_INCREMENT, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE error_report (
+filename varchar PRIMARY KEY
+dn varchar,
+appVersion varchar,
+osVersion varchar,
+username varchar,
+logType varchar,
+logText varchar
+) [42001-158]
+11-20 14:52:56 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORTS" not found; SQL statement:
+SELECT * FROM error_reports [42102-158]
+11-20 14:52:58 jdbc[40]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORTS" not found; SQL statement:
+SELECT * FROM error_reports [42102-158]
+11-20 14:53:15 jdbc[49]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-158]
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.message.DbException.get(DbException.java:135)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:121)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:94)
+	at org.h2.Driver.connect(Driver.java:72)
+	at play.utils.ProxyDriver.connect(ProxyDriver.scala:9)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:256)
+	at com.jolbox.bonecp.ConnectionHandle.obtainInternalConnection(ConnectionHandle.java:211)
+	at com.jolbox.bonecp.ConnectionHandle.<init>(ConnectionHandle.java:170)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:371)
+	at com.jolbox.bonecp.BoneCPDataSource.maybeInit(BoneCPDataSource.java:150)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:112)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:242)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:194)
+	at scala.collection.immutable.List.map(List.scala:45)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:240)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at play.api.Play$.start(Play.scala:60)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:125)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:112)
+	at scala.Option.map(Option.scala:133)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:112)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:110)
+	at scala.Either$RightProjection.flatMap(Either.scala:277)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at akka.dispatch.Future$$anon$3.liftedTree1$1(Future.scala:195)
+	at akka.dispatch.Future$$anon$3.run(Future.scala:194)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:94)
+	at akka.jsr166y.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1381)
+	at akka.jsr166y.ForkJoinTask.doExec(ForkJoinTask.java:259)
+	at akka.jsr166y.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975)
+	at akka.jsr166y.ForkJoinPool.runWorker(ForkJoinPool.java:1479)
+	at akka.jsr166y.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-158]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	... 46 more
+11-20 14:53:16 jdbc[60]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORT" not found; SQL statement:
+DROP TABLE error_report [42102-158]
+11-20 14:53:22 jdbc[111]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORTS" not found; SQL statement:
+SELECT * FROM error_reports [42102-158]
+11-20 14:53:43 jdbc[115]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:93)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:94)
+	at org.h2.Driver.connect(Driver.java:72)
+	at play.utils.ProxyDriver.connect(ProxyDriver.scala:9)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:256)
+	at com.jolbox.bonecp.ConnectionHandle.obtainInternalConnection(ConnectionHandle.java:211)
+	at com.jolbox.bonecp.ConnectionHandle.<init>(ConnectionHandle.java:170)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:371)
+	at com.jolbox.bonecp.BoneCPDataSource.maybeInit(BoneCPDataSource.java:150)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:112)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:242)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:194)
+	at scala.collection.immutable.List.map(List.scala:45)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:240)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at play.api.Play$.start(Play.scala:60)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:125)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:112)
+	at scala.Option.map(Option.scala:133)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:112)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:110)
+	at scala.Either$RightProjection.flatMap(Either.scala:277)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at akka.dispatch.Future$$anon$3.liftedTree1$1(Future.scala:195)
+	at akka.dispatch.Future$$anon$3.run(Future.scala:194)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:94)
+	at akka.jsr166y.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1381)
+	at akka.jsr166y.ForkJoinTask.doExec(ForkJoinTask.java:259)
+	at akka.jsr166y.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975)
+	at akka.jsr166y.ForkJoinPool.runWorker(ForkJoinPool.java:1479)
+	at akka.jsr166y.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104)
+
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-158]
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.message.DbException.get(DbException.java:135)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:121)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:94)
+	at org.h2.Driver.connect(Driver.java:72)
+	at play.utils.ProxyDriver.connect(ProxyDriver.scala:9)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:256)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:305)
+	at com.jolbox.bonecp.BoneCPDataSource.maybeInit(BoneCPDataSource.java:150)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:112)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:242)
+	at play.api.db.BoneCPPlugin$$anonfun$onStart$1.apply(DB.scala:240)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:194)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:194)
+	at scala.collection.immutable.List.map(List.scala:45)
+	at play.api.db.BoneCPPlugin.onStart(DB.scala:240)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:60)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:45)
+	at play.api.Play$.start(Play.scala:60)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:125)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3$$anonfun$1.apply(ApplicationProvider.scala:112)
+	at scala.Option.map(Option.scala:133)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:112)
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$3.apply(ApplicationProvider.scala:110)
+	at scala.Either$RightProjection.flatMap(Either.scala:277)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110)
+	at akka.dispatch.Future$$anon$3.liftedTree1$1(Future.scala:195)
+	at akka.dispatch.Future$$anon$3.run(Future.scala:194)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:94)
+	at akka.jsr166y.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1381)
+	at akka.jsr166y.ForkJoinTask.doExec(ForkJoinTask.java:259)
+	at akka.jsr166y.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975)
+	at akka.jsr166y.ForkJoinPool.runWorker(ForkJoinPool.java:1479)
+	at akka.jsr166y.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-158]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	... 44 more
+11-20 14:53:49 jdbc[116]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORTS" not found; SQL statement:
+SELECT * FROM error_reports [42102-158]
+11-20 14:54:00 jdbc[117]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERROR_REPORTS" not found; SQL statement:
+SELECT * FROM error_reports [42102-158]

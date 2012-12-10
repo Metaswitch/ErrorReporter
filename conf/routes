@@ -1,0 +1,9 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.reports
+GET     /movereport                 controllers.Application.moveReport(filename,dirName, mailto?="")
+GET     /adddummydata				controllers.Application.addDummyData
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
